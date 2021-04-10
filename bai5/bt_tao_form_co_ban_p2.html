@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        fieldset{
+            background-color: rgb(238, 238, 128);
+            width: 600px;
+        }
+        legend{
+            text-align: center;
+            font-size: 25px;
+            color: blue;
+            background-color: rgb(75, 230, 238);
+        }
+        strong{
+            color: blue;
+        }
+    </style>
+    <title>Form Đăng Ký</title>
+</head>
+<body>
+    <form action="bai5" method="GET">
+        <fieldset>
+            <legend>Đăng Ký Học Viên</legend>
+            <table>
+                <tr>
+                    <td><strong>Họ Và Tên</strong></td>
+                    <td><input type="text" name="name" placeholder="Nguyễn Văn A" size="40px"></td>
+                </tr>
+                <tr>
+                    <td><strong>Ngày Sinh</strong></td>
+                    <td><input type="date" name="birthday" size="30px"></td>
+                </tr>
+                <tr>
+                    <td><strong>Giới Tính</strong></td>
+                    <td>
+                        <input type="radio" name="gender" value="Nam">Nam
+                        <input type="radio" name="gender" value="Nữ">Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Địa Chỉ</strong></td>
+                    <td><input type="textarea" name="address" size="50px"></td>
+                </tr>
+                <tr>
+                    <td><strong>Lớp</strong></td>
+                    <td>
+                        <select name="class">
+                            <option value="" disabled selected>Chọn Lớp</option>
+                            <option value="Lớp A">Lớp A</option>
+                            <option value="Lớp B">Lớp B</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td><input type="text" name="email" size="40px"></td>
+                </tr>
+                <tr>
+                    <td><strong>Điện Thoại</strong></td>
+                    <td><input type="number" name="phone" size="40px"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" value="Đăng Ký">
+                        <input type="reset" value="Nhập Lại">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html>
