@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        form{
+            font-family: 'Times New Roman', Times, serif;
+            width: 500px;
+        }
+        legend{
+            background-color: orangered;
+            width: 300px;
+            color: white;
+            font-size: 25px;
+        }
+        strong{
+            color: blue;
+        }
+    </style>
+    <title>Sở Thích</title>
+</head>
+<body>
+    <form action="bt_tao_form_co_ban.html" method="GET">
+        <fieldset style="text-align: left;">
+            <legend>Sở Thích Của Bạn</legend>
+            <table>
+                <tr>
+                    <td><strong >Họ và tên: </strong></td>
+                    <td><input type="text" name="yourname" placeholder="Your name" size="40px"></td>
+                </tr>
+                <tr>
+                    <td><strong>Email: </strong></td>
+                    <td><input type="text" name="email" placeholder="youremail@example.com" size="40px"></td>
+                </tr>
+            </table>
+            <strong> Sở thích: </strong>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="Thể Thao"><font color="orangered">Thể Thao</font></td>
+                    <td><input type="checkbox" name="hobby" value="Âm Nhạc"><font color="orangered">Âm Nhạc</font></td>
+                    <td><input type="checkbox" name="hobby" value="Đọc Sách"><font color="orangered">Đọc Sách</font></td>
+                </tr>
+               <tr>
+                    <td><input type="checkbox" name="hobby" value="Lướt Web"><font color="orangered">Lướt Web</font></td>
+                    <td><input type="checkbox" name="hobby" value="Chơi Game"><font color="orangered">Chơi Game</font></td>
+                    <td><input type="checkbox" name="hobby" value="Điện Ảnh"><font color="orangered">Điện Ảnh</font></td>
+               </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="Du Lịch"><font color="orangered">Du Lịch</font></td>
+                </tr>
+            </table>
+            <input type="button" value="Gửi Thông Tin">
+            <input type="reset" value="Nhập lại">
+        </fieldset>
+    </form>
+</body>
+</html>
