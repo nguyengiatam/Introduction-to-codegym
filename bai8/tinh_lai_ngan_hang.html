@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let so_tien = prompt('Nhập số tiền bạn vay \nLàm tròn đơn vị triệu đồng');
+        so_tien = Number(so_tien);
+        so_tien = so_tien*1000000;
+        let lai_suat = prompt('Nhập lãi suất của ngân hàng \nVí dụ 5% hãy nhập 5');
+        lai_suat = Number(lai_suat);
+        let nam = prompt('Nhập số năm sẽ vay');
+        let n = so_tien + (nam*(so_tien*lai_suat/100));
+        n = n.toLocaleString();
+        document.write('Số tiền bạn phải trả sau ' + nam + ' năm là: ' + n );
+    </script>
+</body>
+</html>
