@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm Tra Số Chẵn</title>
+    <script>
+        function kiemtra(){
+            let a = document.getElementById("ipnumber").value;
+            let b = a % 2 == 0 ? 'chẵn' : 'lẻ';
+            alert(a + ' là một số ' + b);
+        }
+    </script>
+</head>
+<body>
+    <h4>Nhập số</h4>
+    <input type="number" id="ipnumber" placeholder="Nhập số vào đây" size="30">
+    <button type="button" onclick="kiemtra()">Kiểm Tra</button>
+</body>
+</html>
