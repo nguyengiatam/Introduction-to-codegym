@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy Tính</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+        }
+        input{
+            text-align: right;
+        }
+        button{
+            width: 100%;
+        }
+        p{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="4"><p id="socu" value=""></p></th>
+        </tr>
+        <tr>
+            <td colspan="4"><input type="text" id="sovao" value=""></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="so" id="7">7</button></td>
+            <td><button type="button" class="so" id="8">8</button></td>
+            <td><button type="button" class="so" id="9">9</button></td>
+            <td><button type="button" class="tinh" id="cong" value="+">+</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="so" id="4">4</button></td>
+            <td><button type="button" class="so" id="5">5</button></td>
+            <td><button type="button" class="so" id="6">6</button></td>
+            <td><button type="button" class="tinh" id="tru" value="-">-</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="so" id="1">1</button></td>
+            <td><button type="button" class="so" id="2">2</button></td>
+            <td><button type="button" class="so" id="3">3</button></td>
+            <td><button type="button" class="tinh" id="nhan" value="x">x</button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="so" id="0">0</button></td>
+            <td><button type="button" class="so" id=".">.</button></td>
+            <td><button type="button" class="ketqua" id="bang">=</button></td>
+            <td><button type="button" class="tinh" id="chia" value="/">/</button></td>
+        </tr>
+        <tr>
+            <th colspan="4"><button type="button" id="xoa">Xóa</button></th>
+        </tr>
+    </table>
+    
+    <script>
+        let sovao = document.getElementById("sovao");
+        let input = document.getElementsByClassName("so");
+        let tinh = document.getElementsByClassName("tinh");
+        let ketqua = document.getElementById("bang");
+        let xoa = document.getElementById("xoa");
+        for (let i = 0; i < input.length; i++){
+            input[i].addEventListener('click', function(){
+                if(sovao.value == ""){
+                    sovao.value = input[i].id;
+                }
+                else if(sovao.value != ""){
+                    sovao.value += input[i].id;
+                }
+            })
+        }
+        let sodau = 0;
+        let gt_hien_thi;
+        for (let i = 0; i < tinh.length; i++){
+            tinh[i].addEventListener('click', function(){
+                sodau = +sovao.value;
+                if(sovao.value == ''){
+                    document.getElementById("socu").innerHTML = '';
+                }
+                else if(this.id == 'cong'){
+                    gt_hien_thi = sovao.value + '+';
+                    document.getElementById("socu").innerHTML = gt_hien_thi;
+                }
+                else if(this.id == "tru"){
+                    gt_hien_thi = sovao.value + '-';
+                    document.getElementById("socu").innerHTML = gt_hien_thi;
+                }
+                else if(this.id == "nhan"){
+                    gt_hien_thi = sovao.value + 'x';
+                    document.getElementById("socu").innerHTML = gt_hien_thi;
+                }
+                else if(this.id == "chia"){
+                    gt_hien_thi = sovao.value + '/';
+                    document.getElementById("socu").innerHTML = gt_hien_thi;
+                }
+                sovao.value = '';
+            })
+        }
+        ketqua.onclick = function(){
+            if(sovao.value == ''){
+                sovao.value = '';
+            }
+            else if(gt_hien_thi == sodau + '+'){
+                sovao.value = sodau + +sovao.value;
+            }
+            else if(gt_hien_thi == sodau + '-'){
+                sovao.value = sodau - +sovao.value;
+            }
+            else if(gt_hien_thi == sodau + 'x'){
+                sovao.value = sodau * +sovao.value;
+            }
+            else if(gt_hien_thi == sodau + '/'){
+                sovao.value = sodau / +sovao.value;
+            }
+            document.getElementById("socu").innerHTML = '';
+        }
+        xoa.onclick = function(){
+            sovao.value = '';
+        }
+
+    </script>
+</body>
+</html>
