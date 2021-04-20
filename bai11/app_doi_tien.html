@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đổi tiền</title>
+    <style>
+        input{
+            text-align: center;
+        }
+        select{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2"><p id="thongbao"></p></th>
+        </tr>
+        <tr>
+            <td>Đồng tiền</td>
+            <td>Giá trị quy đổi</td>
+        </tr>
+        <tr>
+            <td>
+                <select id="loai_tien_a">
+                    <option value="" disabled selected>Chọn</option>
+                    <option value="1">Việt Nam Đồng</option>
+                    <option value="23074">Đô La Mỹ</option>
+                    <option value="213.37">Yên Nhật</option>
+                    <option value="3544.23">Nhân Dân Tệ</option>
+                </select>
+            </td>
+            <td><input type="text" id="so_dau" value=""></th>
+        </tr> 
+        <tr>
+            <td>
+                <select id="loai_tien_b">
+                    <option value="" disabled selected>Chọn</option>
+                    <option value="1">Việt Nam Đồng</option>
+                    <option value="23074">Đô La Mỹ</option>
+                    <option value="213.37">Yên Nhật</option>
+                    <option value="3544.23">Nhân Dân Tệ</option>
+                </select>
+            </td>
+            <td><input type="text" id="so_sau" value=""></td>
+        </tr> 
+    </table>
+    <script>
+        let thongbao = document.getElementById("thongbao");
+        let so_dau = document.getElementById("so_dau");
+        let so_sau = document.getElementById("so_sau");
+        let loai_tien_a = document.getElementById("loai_tien_a");
+        let loai_tien_b = document.getElementById("loai_tien_b");
+        let ty_gia_a;
+        let ty_gia_b;
+        let ket_qua_a;
+        let ket_qua_b;
+        loai_tien_a.addEventListener('change', function(){
+            ty_gia_a = +loai_tien_a.value;
+        })
+        loai_tien_b.addEventListener('change', function(){
+            ty_gia_b = +loai_tien_b.value;
+        })
+        so_dau.addEventListener('keyup', function(){
+            if(ty_gia_a == undefined || ty_gia_b == undefined){
+                thongbao.innerHTML = "Hãy chọn đồng tiền quy đổi";
+            }
+            else{
+                ket_qua_b = +so_dau.value * (ty_gia_a/ty_gia_b);
+                ket_qua_b = ket_qua_b.toLocaleString();
+                so_sau.value = ket_qua_b;
+                thongbao.innerHTML = '';
+            }
+        })
+        so_sau.addEventListener('keyup', function(){
+            if(ty_gia_a == undefined || ty_gia_b == undefined){
+                thongbao.innerHTML = "Hãy chọn loại tiền quy đổi";
+            }
+            else{
+                ket_qua_a = +so_sau.value * (ty_gia_b/ty_gia_a);
+                ket_qua_a = ket_qua_a.toLocaleString();
+                so_dau.value = ket_qua_a;
+                thongbao.innerHTML = '';
+            }
+        })
+    </script>
+</body>
+</html>

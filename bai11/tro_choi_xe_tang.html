@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xe Tăng</title>
+    <style>
+        th{
+            width: 30px;
+            height: 30px;
+        }
+        td{
+            width: 30px;
+            height: 30px;
+        }
+        div{
+            margin: auto;
+        }
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: relative; border: 1px; width: 200px; height: 200px; background-color: wheat;">
+        <img id="tank" src="xetank/tank.png" alt="tank" width="20px" height="20px" style="position: absolute; top: 180px; left: 0px; transform: rotate(0deg);" >
+    </div>
+    <br>
+    <div>
+        <table>
+            <tr>
+                <th></th>
+                <th><button type="button" class="dichuyen" id="len"><img src="dieuhuong/len.png" alt="len"></button></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><button type="button" class="dichuyen" id="trai"><img src="dieuhuong/trai.png" alt="trai"></button></td>
+                <td></td>
+                <td><button type="button" class="dichuyen" id="phai"><img src="dieuhuong/phai.png" alt="phai"></button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" class="dichuyen" id="xuong"><img src="dieuhuong/xuong.png" alt="xuong"></button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let go = document.getElementsByClassName("dichuyen");
+        let tank = document.getElementById("tank");
+        for(let i = 0; i < go.length; i++){
+            go[i].addEventListener('click', function(){
+                let top = parseInt(tank.style.top);
+                let left = parseInt(tank.style.left);
+                switch(this.id){
+                    case("len"):
+                        if(top == 0){
+                            top = 0;
+                        }
+                        else{
+                            top -= 20;
+                            tank.style["top"] = top + "px";
+                            tank.style["left"] = left + "px";
+                            tank.style["transform"] = "rotate(0deg)";
+                        }
+                        break;
+                    case("phai"):
+                        if(left == 180){
+                            left = 180;
+                        }
+                        else{
+                            left += 20;
+                            tank.style["left"] = left + "px";
+                            tank.style["top"] = top + "px";
+                            tank.style["transform"] = "rotate(90deg)";
+                        }
+                        break;
+                    case("trai"):
+                        if(left == 0){
+                            left = 0;
+                        }
+                        else{
+                            left -= 20;
+                            tank.style["left"] = left + "px";
+                            tank.style["top"] = top + "px";
+                            tank.style["transform"] = "rotate(270deg)";
+                        }
+                        break;
+                    case("xuong"):
+                        if(top == 180){
+                            top = 180;
+                        }
+                        else{
+                            top += 20;
+                            tank.style["top"] = top + "px";
+                            tank.style["left"] = left + "px";
+                            tank.style["transform"] = "rotate(180deg)";
+                        }
+                        break;
+                }
+            })
+        }
+    </script>
+</body>
+</html>
