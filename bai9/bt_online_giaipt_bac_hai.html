@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải phương trình bậc hai</title>
+    <style>
+        input{
+            width: 50px;
+            height: 20px;
+            font-size: medium;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <p>Giải phương trình bậc 2: ax<sup>2</sup> + bx + c = 0</p>
+    <input type="text" id="a" value="">x<sup>2</sup> + 
+    <input type="text" id="b" value="">x + 
+    <input type="text" id="c" value=""> = 0
+    <button type="button" id="tinh" >Xem kết quả</button>
+    <br>
+    <p id="x1"></p>
+    <p id="x2"></p>
+    <script>
+        let tinh = document.getElementById('tinh');
+        tinh.addEventListener('click', function(){
+            let x1 = document.getElementById('x1');
+            let x2 = document.getElementById('x2');
+            let a = +document.getElementById('a').value;
+            let b = +document.getElementById('b').value;
+            let c = +document.getElementById('c').value;
+            let delta = b*b - 4*a*c;
+            if(a == 0){
+                x1.innerHTML = 'Đây không phải phương trình bậc 2';
+                x2.innerHTML = '';
+            }
+            else{
+                if(delta == 0){
+                    x1.innerHTML ='x1 = ' + -b/(2*a);
+                    x2.innerHTML ='x2 = ' + -b/(2*a);
+                }
+                else{
+                    if(delta > 0){
+                    x1.innerHTML ='x1 = ' + (-b + Math.sqrt(delta))/(2*a);
+                    x2.innerHTML ='x2 = ' + (-b - Math.sqrt(delta))/(2*a);
+                    }
+                    else{
+                    x1.innerHTML = 'Phương trình vô nghiệm';
+                    x2.innerHTML = '';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
