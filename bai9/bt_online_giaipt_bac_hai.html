@@ -14,7 +14,7 @@
 </head>
 <body>
     <p>Giải phương trình bậc 2: ax<sup>2</sup> + bx + c = 0</p>
-    <input type="number" id="a" value="">x<sup>2</sup> + 
+    <input type="text" id="a" value="">x<sup>2</sup> + 
     <input type="text" id="b" value="">x + 
     <input type="text" id="c" value=""> = 0
     <button type="button" id="tinh" >Xem kết quả</button>
@@ -60,7 +60,7 @@
                     x1.innerHTML = 'x<sub>1</sub> = ' + (-b + Math.sqrt(delta))/(2*a);
                     x2.innerHTML = 'x<sub>2</sub> = ' + (-b - Math.sqrt(delta))/(2*a);
                     }
-                    
+
                     else{
                     x1.innerHTML = 'Phương trình vô nghiệm';
                     x2.innerHTML = '';
