@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Điểm Khối D</title>
+    <style>
+        #input{
+            display: flex;
+            flex-direction: column;
+        }
+        #input1{
+            position: relative;
+            display: flex;
+        }
+        #ip1b{
+            position: absolute;
+            margin-left: 80px;
+        }
+        #input2{
+            position: relative;
+            display: flex;
+        }
+        #ip2b{
+            position: absolute;
+            margin-left: 80px;
+        }
+        #input3{
+            position: relative;
+            display: flex;
+        }
+        #ip3b{
+            position: absolute;
+            margin-left: 80px;
+        }
+        #input4{
+            position: relative;
+            display: flex;
+        }
+        #ip4b{
+            position: absolute;
+            margin-left: 80px;
+        }
+        #out{
+            position: relative;
+            display: flex;
+            color: rgb(32, 94, 238);
+            font-size: 17px;
+        }
+        #out2{
+            margin-left: 5px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tính điểm ĐH khối D</h2>
+    <div id="input">
+        <div id="input1">
+            <div id="ip1a">Môn Toán:</div>
+            <div id="ip1b"><input type="number" id="toan"></div>
+        </div>
+        <br>
+        <div id="input2">
+            <div id="ip2a">Môn Văn:</div>
+            <div id="ip2b"><input type="number" id="van"></div>
+        </div>
+        <br>
+        <div id="input3">
+            <div id="ip3a">Môn Anh:</div>
+            <div id="ip3b"><input type="number" id="anh"></div>
+        </div>
+        <br>
+        <div id="input4">
+            <div id="ip4a">Khu vực:</div>
+            <div id="ip4b">
+                <select id="kv">
+                    <option value="" disabled selected>Chọn khu vực</option>
+                    <option value="kv1">KV1</option>
+                    <option value="kv2_nt">KV2-NT</option>
+                    <option value="kv2">KV2</option>
+                    <option value="kv3">KV3</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button type="button" id="tinh">Xem Kết Quả</button>
+    <br><br>
+    <div id="out">
+        <div id="out1"><strong>Tổng điểm ĐH khối D của bạn là: </strong></div>
+        <div id="out2"></div>
+    </div>
+    <script>
+        let tinh = document.getElementById('tinh');
+        tinh.addEventListener('click', function() {
+            let toan = +document.getElementById('toan').value;
+            let van = +document.getElementById('van').value;
+            let anh = +document.getElementById('anh').value;
+            let kv = document.getElementById('kv').value;
+            let sum = toan + van + anh;
+            switch(kv){
+                case("kv1"): 
+                    sum += 0.75;
+                    break;
+                case("kv2_nt"): 
+                    sum += 0.5;
+                    break;
+                case("kv2"): 
+                    sum += 0.25;
+                    break;
+                default: 
+                    sum = sum;
+                    break;
+            }
+            document.getElementById('out2').innerHTML = sum;
+        })
+    </script>
+</body>
+</html>

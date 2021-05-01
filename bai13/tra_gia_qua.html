@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tra Giá</title>
+</head>
+<body>
+    <h4>Chọn loại quả bạn muốn xem giá</h4>
+    <select name="fruit" id="fruit" style="width: 100px; height: 25px;">
+        <option value="" disabled selected>Chọn</option>
+        <option value="oi">Ổi</option>
+        <option value="dua_hau">Dưa Hấu</option>
+        <option value="tao">Táo</option>
+        <option value="xoai">Xoài</option>
+        <option value="cam">Cam</option>
+        <option value="chom_chom">Chôm Chôm</option>
+        <option value="mang_cut">Măng Cụt</option>
+    </select>
+    <br><br>
+    <div style="display: flex;">
+        <div><strong>Giá:</strong></div>
+        <div style="margin-left: 5px;"><strong id="out"></strong></div>
+        <div style="margin-left: 5px;"><strong>VNĐ/kg</strong></div>
+    </div>
+    <script>
+        let out = document.getElementById("out");
+        let fruit = document.getElementById('fruit');
+        fruit.addEventListener('change', function(){
+            switch(fruit.value){
+                case('oi'): out.innerHTML = '20000';
+                    break;
+                case('dua_hau'): out.innerHTML = '20000';
+                    break;
+                case('tao'): out.innerHTML = '30000';
+                    break;
+                case('xoai'): out.innerHTML = '30000';
+                    break;
+                case('cam'): out.innerHTML = '40000';
+                    break;
+                case('chom_chom'): out.innerHTML = '40000';
+                    break;
+                case('mang_cut'): out.innerHTML = '50000';
+            }
+        })
+    </script>
+</body>
+</html>

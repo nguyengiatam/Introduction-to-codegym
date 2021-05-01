@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xem Ngày</title>
+    <style>
+        #in{
+            display: flex;
+        }
+        #in2{
+            display: flex;
+        }
+        #out{
+            display: flex;
+        }
+        #month{
+            width: 70px;
+            margin-left: 5px;
+        }
+        #year{
+            width: 70px;
+            margin-left: 12px;
+        }
+        #get{
+            margin-left: 100px;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="in2">
+        <div><strong> Nhập vào năm bạn muốn xem: </strong></div>
+        <div><input type="text" name="year" id="year" value=""></div>
+    </div>
+    <br>
+    <div id="in">
+        <div><strong> Nhập vào tháng bạn muốn xem: </strong></div>
+        <div><input type="text" name="month" id="month" value=""></div>
+    </div> 
+    <br>
+    <div><button type="button" id="get">Xem Ngay</button></div>
+    <br>
+    <div id="out">
+        <div><strong>Số ngày là: </strong></div>
+        <div style="margin-left: 5px;"><strong id="return"> </strong></div>
+    </div> 
+    <script>
+        let month = document.getElementById("month");
+        let get = document.getElementById("get");
+        let out = document.getElementById("return");
+        let year = document.getElementById("year");
+        get.addEventListener('click', function(){
+            if(+month.value < 1 && +month.value > 12){
+                out.innerHTML = 'Tháng không hợp lệ'
+            }
+            else{
+                switch(+month.value){
+                    case(1):
+                    case(3):
+                    case(5):
+                    case(7):
+                    case(8):
+                    case(10):
+                    case(12):
+                        out.innerHTML = '31';
+                        break;
+                    case(4):
+                    case(6):
+                    case(9):
+                    case(11):
+                        out.innerHTML = '30';
+                        break;
+                    case(2):
+                        if(+year.value % 100 == 0){
+                            if(+year.value % 400 == 0){
+                                out.innerHTML = '29';
+                            }
+                            else{
+                                out.innerHTML = '28';
+                            }
+                        }
+                        else{
+                            if(year.value % 4 == 0){
+                                out.innerHTML = '29';
+                            }
+                            else{
+                                out.innerHTML = '28';
+                            }
+                        }
+                        break;
+                }
+            }
+        })
+    </script> 
+</body>
+</html>

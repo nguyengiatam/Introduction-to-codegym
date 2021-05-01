@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Năm Âm</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+        }
+        #tinh_nam{
+            display: flex;
+            flex-direction: column;
+        }
+        .tinh_nam{
+            margin-top: 10px;
+        }
+        #lay_gt{
+            display: flex;
+        }
+        #get{
+            margin-left: 5px;
+        }
+        #out{
+            color: rgb(30, 212, 240);
+        }
+        #mess{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="tinh_nam">
+        <div class="tinh_nam">Nhập vào năm dương lịch bạn muốn xem </div>
+        <div class="tinh_nam" id="lay_gt">
+            <div><input type="number" id="input"></div>
+            <div><button type="button" id="get">Xem kết quả</button></div>
+        </div>
+        <div class="tinh_nam"><strong>Kết quả: </strong><span id="out"></span></div>
+        <div class="tinh_nam" id="mess"></div>
+    </div>
+    <script>
+        let input = document.getElementById('input');
+        let get = document.getElementById('get');
+        let out = document.getElementById('out');
+        let mess = document.getElementById('mess');
+        let can;
+        let chi;
+        let result;
+        get.addEventListener('click', function(){
+            if(input.value == ''){
+                mess.innerHTML = 'Hãy nhập vào năm muốn xem';
+                out.innerHTML = '';
+            }
+            else{
+                mess.innerHTML = '';
+                switch(+input.value % 10){
+                    case(0): 
+                        can = 'Canh';
+                        break;
+                    case(1): 
+                        can = 'Tân';
+                        break;
+                    case(2): 
+                        can = 'Nhâm';
+                        break;
+                    case(3): 
+                        can = 'Quý';
+                        break;
+                    case(4): 
+                        can = 'Giáp';
+                        break;
+                    case(5): 
+                        can = 'Ất';
+                        break;
+                    case(6): 
+                        can = 'Bính';
+                        break;
+                    case(7): 
+                        can = 'Đinh';
+                        break;
+                    case(8): 
+                        can = 'Mậu';
+                        break;
+                    case(9): 
+                        can = 'Kỷ';
+                        break
+                }
+                switch(+input.value % 12){
+                    case(0): 
+                        chi = 'Thân';
+                        break;
+                    case(1): 
+                        chi = 'Dậu';
+                        break;
+                    case(2): 
+                        chi = 'Tuất';
+                        break;
+                    case(3): 
+                        chi = 'Hợi';
+                        break;
+                    case(4): 
+                        chi = 'Tí';
+                        break;
+                    case(5): 
+                        chi = 'Sửu';
+                        break;
+                    case(6): 
+                        chi = 'Dần';
+                        break;
+                    case(7): 
+                        chi = 'Mão';
+                        break;
+                    case(8): 
+                        chi = 'Thìn';
+                        break;
+                    case(9): 
+                        chi = 'Tị';
+                        break;
+                    case(10): 
+                        chi = 'Ngọ';
+                        break;
+                    case(11): 
+                        chi = 'Mùi';
+                        break;
+                }
+
+                result = can + ' ' + chi;
+
+                out.innerHTML = result;
+            }
+        })
+    </script>
+</body>
+</html>
