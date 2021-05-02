@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Đoán Số</title>
+</head>
+<body>
+    <button type="button" id="start">Bắt đầu chơi</button>
+    <script>
+        let start = document.getElementById('start');
+        start.addEventListener('click', function(){
+            let min = +prompt('Nhập số nhỏ nhất trong khoảng mà bạn muốn chọn');
+            let max = +prompt('Nhập số lớn nhất trong khoảng mà bạn muốn chọn');
+            let so_kq = Math.floor(Math.random()*(max - min + 1)) + min;
+            let a = 0;
+            let so_choi;
+            let mess = 'Bạn đã đoán sai';
+            while(a < 3){
+                so_choi = +prompt('Nhập số mà bạn đoán sẽ trả về lần ' + (a + 1));
+                if(so_choi === so_kq){
+                    mess = 'Bạn đã đoán đúng số: ' + so_kq;
+                }
+                a++;
+            }
+            alert(mess);
+        })
+    </script>
+</body>
+</html>

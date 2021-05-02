@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài Tập Luyện Tập</title>
+    <style>
+        #bai_tap{
+            display: flex;
+            flex-direction: column;
+        }
+        .bai_tap{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bai_tap">
+        <div class="bai_tap"><strong> Bài 1 </strong><button type="button" id="bai1">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 2 </strong><button type="button" id="bai2">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 3 </strong><button type="button" id="bai3">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 4 </strong><button type="button" id="bai4">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 5 </strong><button type="button" id="bai5">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 6 </strong><button type="button" id="bai6">Chạy</button></div>
+        <div class="bai_tap"><strong> Bài 7 </strong><button type="button" id="bai7">Chạy</button></div>
+    </div>
+    <script>
+        let bai1 = document.getElementById('bai1');
+        let bai2 = document.getElementById('bai2');
+        let bai3 = document.getElementById('bai3');
+        let bai4 = document.getElementById('bai4');
+        let bai5 = document.getElementById('bai5');
+        let bai6 = document.getElementById('bai6');
+        let bai7 = document.getElementById('bai7');
+        bai1.addEventListener('click', function(){
+            let n = 1;
+            while(n < 100){
+                n++
+            }
+            alert('Đã hoàn thành');
+        })
+
+        bai2.addEventListener('click', function(){
+            let n = prompt('hãy nhập nhiệt độ hiện tại');
+            while(n < 20){
+                n = prompt('Hãy tăng nhiệt độ lên trên 20');
+            }
+            while(n > 100){
+                n = prompt('Hãy giảm nhiệt độ xuống dưới 100');
+            }
+            
+        })
+        bai3.addEventListener('click', function(){
+            let a = 1;
+            let b = 1;
+            let day = '';
+            let c = 0;
+            while(c < 10){
+                day += (a + ',' + b + ',');
+                a += b;
+                b += a;
+                c++;
+            }
+            alert(day);
+        })
+
+        bai4.addEventListener('click', function(){
+            let a = 1;
+            let b = 1;
+            while(a % 5 != 0 && b % 5 != 0){
+                a += b;
+                b += a;
+            }
+            if(a % 5 == 0){
+                alert('Số đầu tiên trong dãy chia hết cho 5 là ' + a);
+            }
+            else{
+                alert('Số đầu tiên trong dãy chia hết cho 5 là ' + b);
+            }
+        })
+
+        bai5.addEventListener('click', function(){
+            let a = 1;
+            let b = 1;
+            let sum = 0;
+            let c = 0;
+            while(c < 10){
+                sum += (a + b);
+                a += b;
+                b += a;
+                c++;
+            }
+            alert('Tổng của 20 số đầu tiên trong dãy fibonacci là: ' + sum);
+        })
+
+        bai6.addEventListener('click', function(){
+            let a = 1;
+            let b = 0;
+            let sum = 0;
+            while(a > 0 && b < 30){
+                if(a % 7 === 0){
+                    sum += a;
+                    b++;
+                }
+                a++;
+            }
+            alert('Tổng của 30 số đầu tiên chia hết cho 7 là: ' + sum);
+        })
+
+        bai7.addEventListener('click', function(){
+            let a = 1;
+            let b = 0;
+            let c = '';
+            let day = '';
+            while(b < 100){
+                if(a % 3 === 0 && a % 5 === 0){
+                    c = 'FizzBuzz'
+                }
+                else if(a % 3 === 0){
+                    c = 'Fizz';
+                }
+                else if(a % 5 === 0){
+                    c = 'Buzz';
+                }
+                else{
+                    c = a;
+                }
+                day += (c + ', ');
+                a++;
+                b++;
+            }
+            alert(day);
+        })
+    </script>
+</body>
+</html>
