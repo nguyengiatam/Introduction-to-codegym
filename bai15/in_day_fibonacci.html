@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>In Dãy Fibonacci</title>
+    <style>
+        .in{
+            margin-top: 10px;
+        }
+        .khung{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="khung">
+        <div class="in">Nhập vào số lượng số của dãy fibonacci</div>
+        <div class="in"><input type="number" id="input"></div>
+        <div class="in"><button type="button" id="get">Xem</button></div>
+    </div>
+    <div class="khung"><p id="output"></p></div>
+    <script>
+        let input = document.getElementById("input");
+        let output = document.getElementById("output");
+        let get = document.getElementById("get");
+        get.addEventListener('click', function(){
+            let a = 0;
+            let b = 1;
+            let i = 0;
+            let day = "";
+            let d;
+            let c = true;
+            if(+input.value % 2 == 0){
+                d = +input.value / 2;
+            }
+            else{
+                d = (+input.value - 1) / 2;
+                c = false;
+            }
+            while(d > i){
+                day += a + ", " + b + ", ";
+                a += b;
+                b += a;
+                if(c == false && i == d - 1){
+                    day += a;
+                }
+                i++;
+            }
+            output.innerHTML = day;
+        })
+    </script>
+</body>
+</html>

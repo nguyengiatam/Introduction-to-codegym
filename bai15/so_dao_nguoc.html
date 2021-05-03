@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Số Đảo Ngược</title>
+    <style>
+        .abc{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>Nhập vào số bạn muốn đổi</div>
+    <div class="abc"><input type="number" id="in"></div>
+    <div class="abc"><strong>Số đảo ngược là: </strong><span id="out"></span></div>
+    <script>
+        let input = document.getElementById("in");
+        let out = document.getElementById("out");
+        input.addEventListener('keyup', function(){
+            let a = input.value;
+            let x = a.length;
+            let nguoc = "";
+            let arr = new Array(x);
+            for(let i = 0; i < x; i++){
+                arr[i] = a.substr(0,1);
+                a = a.substr(1,x);
+            }
+            for(let i = x - 1; i >= 0; i--){
+                nguoc += arr[i];
+            }
+            out.innerHTML = nguoc;
+        })
+    </script>
+</body>
+</html>

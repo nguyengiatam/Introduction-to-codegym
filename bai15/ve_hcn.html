@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ Hình Chữ Nhật</title>
+</head>
+<body>
+    <script>
+        let cd = +prompt("nhập chiều dài hình chữ nhật(đơn vị px)");
+        let cr = +prompt('Nhập chiều rộng hình chữ nhật(đơn vị px)');
+        let a = prompt("Nhập ký tự bạn muốn dùng để vẽ hình chữ nhật");
+        let khung = "<table width = '" + cd + "' height = '" + cr + "' >";
+        let i = 0;
+        let j = 0;
+        while(i < 5){
+            khung += "<tr>";
+            while(j < 10){
+                if(i == 0 || i == 4){
+                    khung += ("<td> " + a + "</td>");
+                }
+                else{
+                    if(j == 0 || j == 9){
+                        khung += ("<td> " + a + "</td>");
+                    }
+                    else{
+                        khung += ("<td></td>");
+                    }
+                }
+                j++;
+            }
+            khung += "</tr>";
+            j = 0;
+            i++;
+        }
+        khung += "</table>";
+        document.write(khung);
+    </script>
+</body>
+</html>
