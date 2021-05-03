@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FizzBuzz</title>
+</head>
+<body>
+    <script>
+        let a = +prompt("Nhập vào số đầu của khoảng");
+        let b = +prompt("nhập vào số cuối của khoảng");
+        let day = "";
+        let c;
+        for(let i = a; i <= b; i++){
+            if(i % 3 === 0 && i % 5 === 0){
+                day += "FizzBuzz" + "<br>";
+            }
+            else if(i % 3 === 0){
+                day += "Fizz" + "<br/>";
+            }
+            else if(i % 5 === 0){
+                day += "Buzz" + "<br/>";
+            }
+            else{
+                day += i + "<br/>";
+            }
+        }
+        document.write(day);
+    </script>
+</body>
+</html>

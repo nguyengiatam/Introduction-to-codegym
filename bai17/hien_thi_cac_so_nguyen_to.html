@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hiển thị các số nguyên tố</title>
+    <style>
+        .input{
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div>Nhập vào số lượng số nguyên tố mà bạn muốn in ra</div>
+        <div class="input"><input type="number" id="input"></div>
+        <div class="input"><button type="button" id="print">In ra</button></div>
+        <div class="input"><Strong>Kết quả: </Strong><span id="out"></span></div>
+    </div>
+    <script>
+        let input = document.getElementById("input");
+        let println = document.getElementById("print");
+        let out = document.getElementById("out");
+        println.addEventListener("click", function(){
+            let a = +input.value;
+            let check = true;
+            let n = 0;
+            let day = "";
+            for(let i = 2; n < a; i++){
+                for(let j = 2; j <= Math.sqrt(i); j++){
+                    if(i % j === 0){
+                        check = false;
+                        break;
+                    }
+                }
+                if(check == true){
+                    day += i + ", ";
+                    n++;
+                }
+                check = true;
+            }
+            out.innerHTML = day;
+        })
+    </script>
+</body>
+</html>

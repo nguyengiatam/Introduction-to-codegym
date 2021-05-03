@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vẽ Tam Giác</title>
+</head>
+<body>
+    <script>
+        let hinh1 = "<table width = '70px' height = '140px'>";
+        let hinh2 = "<table width = '70px' height = '140px'>";
+        let hinh3 = "<table width = '70px' height = '140px'>";
+        let hinh4 = "<table width = '70px' height = '140px'>";
+        for(let i = 0; i < 5; i++){
+            hinh1 += "<tr>";
+            for(let j = 0; j < 5; j++){
+                if(j <= i){
+                    hinh1 += "<td>*</td>";
+                }
+                else{
+                    hinh1 += "<td></td>";
+                }
+            }
+            hinh1 += "</tr>";
+        }
+
+        for(let i = 4; i >= 0; i--){
+            hinh2 += "<tr>";
+            for(let j = 0; j < 5; j++){
+                if(j <= i){
+                    hinh2 += "<td>*</td>";
+                }
+                else{
+                    hinh2 += "<td></td>";
+                }
+            }
+            hinh2 += "</tr>";
+        }
+        hinh2 += "<br/>";
+
+        for(let i = 4; i >= 0; i--){
+            hinh3 += "<tr>";
+            for(let j = 0; j < 5; j++){
+                if(j >= i){
+                    hinh3 += "<td>*</td>";
+                }
+                else{
+                    hinh3 += "<td></td>";
+                }
+            }
+            hinh3 += "</tr>";
+        }
+        hinh3 += "<br/>";
+
+        for(let i = 0; i < 5; i++){
+            hinh4 += "<tr>";
+            for(let j = 0; j < 5; j++){
+                if(j >= i){
+                    hinh4 += "<td>*</td>";
+                }
+                else{
+                    hinh4 += "<td></td>";
+                }
+            }
+            hinh4 += "</tr>";
+        }
+        hinh4 += "<br/>";
+
+        document.write(hinh1);
+        document.write(hinh2);
+        document.write(hinh3);
+        document.write(hinh4);
+    </script>
+</body>
+</html>
