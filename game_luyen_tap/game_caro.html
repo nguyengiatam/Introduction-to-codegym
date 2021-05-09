@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Caro</title>
+    <style>
+        table{
+            border: solid 1px;
+            width: 900px;
+            height: 450px;
+        }
+        td{
+            border: solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" onclick="xoa()" >Chơi Lại</button>
+    <script>
+        let day = 1; // Kiểm tra điều kiện thắng
+        let luot = true; // Trạng thái để in ra x hoặc o
+        let id = 0; // Gán id cho các ô td
+        let o_co = document.getElementsByClassName("o_co"); // Mảng các ô td
+        let x = new Array(o_co.length); // Mảng để lưu giá trị x
+        let o = new Array(o_co.length); // Mảng để lưu giá trị o
+
+        // In ra bàn đấu là 1 bảng có diện tích 15*30 ô
+        let ban = "<table>";
+        for(let i = 0; i < 15; i++){
+            ban += "<tr>";
+            for(let j = 0; j < 30; j++){
+                ban += ("<td class='o_co' id='" + id + "'><img src='o_co.png'></td>");
+                id++;
+            }
+            ban += "</tr>";
+        }
+        ban += "</table>";
+        document.write(ban);
+
+        // Kiểm tra sự kiện để in ra x hoặc o
+        for(let i = 0; i < o_co.length; i++){
+            o_co[i].addEventListener('click', function(){
+                if(x[i] == true || o[i] == true){
+
+                }
+                else{
+                    if(luot == true){ 
+                        o_co[i].innerHTML = "<img src='x.png'>";
+                        x[i] = true;
+                        luot = false;
+                        check(i, 1, x, "X");
+                        check(i, -1, x, "X");
+                        day = 1;
+                        check(i, 30, x, "X");
+                        check(i, -30, x, "X");
+                        day = 1;
+                        check(i, 29, x, "X");
+                        check(i, -29, x, "X")
+                        day = 1;
+                        check(i, 31, x, "X");
+                        check(i, -31, x, "X");
+                        day = 1;
+                    }
+
+                    else{
+                        o[i] = true;
+                        o_co[i].innerHTML = "<img src='o.png'>";
+                        luot = true;
+                        check(i, 1, o, "O");
+                        check(i, -1, o, "O");
+                        day = 1;
+                        check(i, 30, o, "O");
+                        check(i, -30, o, "O");
+                        day = 1;
+                        check(i, 29, o, "O");
+                        check(i, -29, o, "O")
+                        day = 1;
+                        check(i, 31, o, "O");
+                        check(i, -31, o, "O");
+                        day = 1;
+                    }
+                    
+                }
+            })
+        }
+
+        //Hàm kiểm tra các giá trị xung quanh ô vừa click
+        // a là chỉ mục ô vừa click, b là chỉ mục ô tiếp theo trong dãy dựa trên a, c là mảng giá trị của ô vừa click, d là chuỗi "X" hoặc "O" để in ra
+        // Các chỉ mục dựa theo số id đã gán
+        function check(a, b, c, d){
+            
+            for(let j = a + b; j < o_co.length; j += b){
+                        if(c[j] == true){
+                            day++;
+                        }
+                        else{
+                            if(day == 5){
+                                alert( d + " win");
+                                xoa();
+                                break;
+                            }
+                            else{
+                                break;
+                            }
+                        }
+            } 
+        }
+
+        //Hàm xóa để đưa các giá trị về trạng thái ban đầu.
+        function xoa(){
+            for(let i = 0; i < o_co.length; i++){
+                o_co[i].innerHTML = "<img src='o_co.png'>"
+                x[i] = false;
+                o[i] = false;
+            }
+            day = 1;
+            luot = true;
+        }
+    </script>
+</body>
+</html>
