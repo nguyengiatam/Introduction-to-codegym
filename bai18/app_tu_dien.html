@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ Điển Anh Việt</title>
+    <style>
+        textarea{
+            width: 200px;
+            height: 100px;
+            font-size: 26px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #khung{
+            display: flex;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+        .ingredient{
+            float: left;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="khung"></div>
+        <div class="ingredient">
+            <strong>Chọn ngôn ngữ bạn muốn tra:</strong>
+            <select id="language">
+                <option value="english">Tiếng Anh</option>
+                <option value="vietnam">Tiếng Việt</option>
+            </select>
+            <br><br>
+            <div>
+                <textarea id="input" placeholder="Nhập từ khóa"></textarea>
+                <textarea id="output" placeholder="Bản dịch" disabled></textarea>
+            </div>
+        </div>
+
+        <div class="ingredient">
+            <strong>Thêm từ khóa vào từ điển: </strong>
+            <button type="button" id="add">Thêm</button>
+        </div>
+        
+    </div>
+    <script>
+        let language = document.getElementById("language");
+        let input = document.getElementById("input");
+        let output = document.getElementById("output");
+        let add = document.getElementById("add");
+        let x = 0;
+        let english = new Array(x);
+        let vietnam = new Array(x);
+        add.addEventListener("click", function(){
+            while(english[x] == undefined){
+                english[x] = prompt("Nhập từ khóa tiếng Anh");
+            }
+            while(vietnam[x] == undefined){
+                vietnam[x] = prompt("Nhập từ khóa tiếng Việt");
+            }
+            x++;
+        })
+        let vao = english;
+        let ra = vietnam;
+        language.addEventListener("change", function(){
+            switch(language.value){
+                case "english": 
+                    vao = english;
+                    ra = vietnam;
+                    break;
+                case "vietnam": 
+                    vao = vietnam;
+                    ra = english;
+                    break;
+            }
+        })
+
+        input.addEventListener("keyup", function(){
+            for(let i = 0; i < x; i++){
+                if(input.value == ""){
+                    output.value = "";
+                    break;
+                }
+                if(input.value != vao[i]){
+                    output.value = "Không có kết quả";
+                    continue;
+                }
+                else{
+                    output.value = ra[i];
+                    break;
+                }
+                
+            }
+        })
+        
+    </script>
+</body>
+</html>
