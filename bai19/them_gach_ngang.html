@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        let arr = prompt("Nhập vào số cần đổi");
+        let x = 0;
+        let n = arr.length;
+        let arr1 = [];
+        arr1[0] = arr[0];
+        for(let i = 1; i < n; i++){
+            if(arr[i] % 2 == 0 && arr[i - 1] % 2 == 0){
+                arr1[i + x] = "-";
+                x++;
+            }
+            arr1[i+x] = arr[i];
+        }
+        let z = arr1.join('');
+        document.write(z);
+    </script>
+</body>
+</html>

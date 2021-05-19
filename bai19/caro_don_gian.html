@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro đơn giản</title>
+</head>
+<body>
+    <h4>Caro Game Simple</h4>
+</body>
+<script>
+    let arr = new Array(5);
+    let map = "";
+    for(let i = 0; i < 5; i++){
+            arr[i] = [0,0,0,0,0];
+        }
+    window.onload = in_map();
+    function in_map(){
+        
+        for(let i = 0; i < 5; i++){
+            for(let j = 0; j < 5; j++){
+                map += (arr[i][j] + "&nbsp;&nbsp;")
+            }
+            map += "<br>";
+        }
+        map += ("<br> <button type='button' onclick='doi_gt()'>Change Value</button>")
+    }
+    document.write("<div id='ban_co'>" + map + "</div>");
+    let x;
+    let y;
+    function doi_gt(){
+        x = +prompt("Nhập tọa độ hàng: ");
+        y = +prompt("Nhập tọa độ cột: ");
+        arr[x][y] = "x";
+        map = "";
+        in_map();
+        document.getElementById("ban_co").innerHTML = map;
+    }
+</script>
+</html>
