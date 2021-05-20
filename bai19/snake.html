@@ -86,6 +86,8 @@
 
     start.addEventListener("click", chay);
     function chay(){
+        document.getElementById("reset").style.display = "block";
+        start.style.display = "none";
         let top = [];
         let left = [];
         stop = setInterval(function(){
@@ -194,6 +196,12 @@ let y = 0;
         do{
             x = Math.floor(Math.random()*480);
             y = Math.floor(Math.random()*980);
+            for(let i = 0; i < snake.length; i++){
+                if(top[i] == x && left[i] == y){
+                    x = 1;
+                    break;
+                }
+            }
         }while(x % 20 != 0 || y % 20 != 0)
         thuc_an.style.top = x + "px";
         thuc_an.style.left = y + "px";
@@ -262,8 +270,6 @@ let y = 0;
 
     function end_game(){
         document.getElementById("end").style.display = "block";
-        document.getElementById("reset").style.display = "block";
-        start.style.display = "none";
         clearInterval(stop);
     }
 
