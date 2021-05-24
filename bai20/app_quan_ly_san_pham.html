@@ -54,8 +54,13 @@
         let menu = document.getElementById("menu");
         let product = [];
         function addToProduct(){
-            addProduct.push(document.getElementById("newProduct").value); 
-            printProduct();  
+            if(document.getElementById("newProduct").value == ""){
+
+            }
+            else{
+                addProduct.push(document.getElementById("newProduct").value); 
+                printProduct();
+            }
         }
 
         function printProduct(){
