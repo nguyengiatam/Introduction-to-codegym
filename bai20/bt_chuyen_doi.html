@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển dổi feet và meter</title>
+    <style>
+        .ingredient textarea{
+            width: 200px;
+            height: 150px;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .ingredient{
+            margin-left: 10px;
+
+        }
+        #main{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="ingredient">
+            <p>Feet</p>
+            <textarea id="feet" placeholder="Nhập vào feet"></textarea>
+        </div>
+        <div class="ingredient">
+            <p>Meter</p>
+            <textarea id="meter" placeholder="Nhập vào meter"></textarea>
+        </div>
+    </div>
+    <script>
+        let feet = document.getElementById("feet");
+        let meter = document.getElementById("meter");
+        feet.addEventListener("keyup", footToMeter);
+        meter.addEventListener("keyup", meterToFood);
+        function footToMeter(){
+            if(feet.value == ""){
+                meter.value = "";
+            }
+            else{
+                meter.value = feet.value * 0.305;
+            }
+        }
+        function meterToFood(){
+            if(meter.value == ""){
+                feet.value = "";
+            }
+            else{
+                feet.value = meter.value * 3.279;
+            } 
+        }
+    </script>
+</body>
+</html>

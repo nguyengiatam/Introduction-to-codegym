@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra số nguyên tố</title>
+</head>
+<body>
+    <h4 style="display:inline">Nhấp nhập để thêm vào số muốn kiểm tra: </h4>
+    <button type="button"  onclick="nhapSo()">Nhập số</button>
+    <script>
+        function nhapSo(){
+            let soNhapVao = +prompt("Nhập vào số bạn muốn kiểm tra");
+            kiemTra(soNhapVao);
+        }
+        function kiemTra(number){
+            let mess = number + " là số nguyên tố";
+            if(number <= 1){
+                mess = number + " không phải số nguyên tố";
+            }
+            else{
+                for(let i = 2; i <= Math.sqrt(number); i++){
+                    if(number % i == 0){
+                        mess = number + " không phải số nguyên tố";
+                        break;
+                    }
+                }
+            }
+            return thongBao(mess);
+        }
+        function thongBao(mess){
+            alert(mess);
+        }
+    </script>
+</body>
+</html>

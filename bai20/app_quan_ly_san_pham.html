@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý sản phẩm</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .product{
+            display: flex;
+            width: 500px;
+        }
+        .product span{
+            width: 200px;
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            padding: 2px;
+        }
+        button{
+            width: 70px;
+            height: 30px;
+            margin-left: 5px;
+            border: solid green;
+            background-color: green;
+            color: white;
+            border-radius: 20px;
+        }
+        #menu{
+            margin-top: 30px;
+        }
+        #add h4{
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="add">
+        <h4>Thêm vào sản phẩm:</h4>
+        <input type="text" id="newProduct">
+        <button type="button" onclick="addToProduct()">Add</button>
+        <br>
+        <h4>Danh sách sản phẩm:</h4>
+    </div>
+    <div id="menu">
+
+    </div>
+    <script>
+        let addProduct = [];
+        let menu = document.getElementById("menu");
+        let product = [];
+        function addToProduct(){
+            addProduct.push(document.getElementById("newProduct").value); 
+            printProduct();  
+        }
+
+        function printProduct(){
+            let println = "";
+            for(let i = 0; i < addProduct.length; i++){
+                println += "<div class='product'><span>" + addProduct[i] + "</span>";
+                println += "<div><button type='button' onclick='editProduct(" + i + ")'>Edit</button></div>";
+                println += "<div><button type='button' onclick='deleteProduct(" + i + ")'>Delete</button></div></div><br/>";
+            }
+            menu.innerHTML = println;
+            document.getElementById("newProduct").value = "";
+            product = document.getElementsByClassName("product");
+        }
+
+        function editProduct(number){
+            product[number].innerHTML = "<input type='text' id='product" + number + "' value='" + addProduct[number] + "'><button type='button' onclick='updateProduct(" + number +")'>Xong</button>";
+        }
+
+        function updateProduct(number){
+            let println = "";
+            addProduct[number] = document.getElementById("product" + number).value;
+            println += "<span>" + addProduct[number] + "</span>";
+            println += "<div><button type='button' onclick='editProduct(" + number + ")'>Edit</button></div>";
+            println += "<div><button type='button' onclick='deleteProduct(" + number + ")'>Delete</button></div>";
+            product[number].innerHTML = println;
+        }
+
+        function deleteProduct(number){
+            addProduct.splice(number,1);
+            printProduct();
+        }        
+    </script>
+</body>
+</html>
