@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+}
+#input{
+    text-align: center;
+    font-size: 24px;
+    width: 32%;
+    margin: auto;
+    border: 5px solid rgb(13, 138, 228);
+    background-color: aliceblue;
+}
+#blockInput{
+    width: 70%;
+}
+#blockButton{
+    width: 30%;
+}
+.addToWork{
+    display: flex;
+}
+h4{
+    margin-top: 10px;
+}
+#addToWork{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24px;
+    border: rgb(13, 138, 228) solid 3px;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    width: 90%;
+    height: 40px;
+}
+#input button{
+    width: 80%;
+    height: 40px;
+    margin-left: 5px;
+    color: white;
+    font-size: 14px;
+    border: orange;
+    border-radius: 20px;
+    background-image: linear-gradient(to bottom right,rgb(247, 230, 205), rgb(241, 117, 16));
+}
+#wrap{
+    display: flex;
+    margin-top: 10px;
+}
+#title{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.title{
+    width: 33.3333%;
+    height: 30px;
+    text-align: center;
+    font-size: 32px;
+}
+.one{
+    color: rgb(231, 38, 48);
+}
+.two{
+    color: rgb(89, 185, 233);
+}
+.three{
+    color: rgb(72, 245, 112);
+}
+.list{
+    margin-left: 5px;
+    padding: 5px;
+    width: 33.3333%;
+    border-radius: 20px;
+}
+#plan{
+    border: double 5px rgb(231, 38, 48);
+}
+#working{
+    border: double 5px rgb(89, 185, 233);
+}
+#finish{
+    border: double 5px rgb(72, 245, 112);
+}
+.jobs{
+    transition: all 0.3s linear;
+    font-size: 24px;
+    padding: 5px;
+    padding-left: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.jobs:hover{
+    transform: translate(0, -5px);
+    box-shadow: 0px 5px 10px 0px black;
+}
+.plan{
+    background-image: linear-gradient(to bottom right,rgb(243, 198, 198), rgb(236, 9, 20));
+    border: 1px double rgb(231, 38, 48);
+    color: white;
+}
+.working{
+    background-image: linear-gradient(to bottom right,rgb(189, 221, 250), rgb(16, 166, 241));
+    border: 1px double rgb(89, 185, 233);
+    color: white;
+}
+.finish{
+    background-image: linear-gradient(to bottom right,rgb(189, 250, 208), rgb(27, 241, 16));
+    border: 1px double rgb(72, 245, 112);
+    color: white;
+}
+#clear{
+    display: flex;
+    text-align: center;
+}
+#clear button{
+    width: 50%;
+    height: 30px;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: white;
+}

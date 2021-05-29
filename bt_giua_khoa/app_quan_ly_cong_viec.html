@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Công Việc</title>
+    <link rel="stylesheet" type="text/css" href="styleAppQLCV.css">
+</head>
+<body onload="getDataLocal()">
+    <div id="input">
+        <h4>Bạn dự định sẽ làm gì?</h4>
+        <div class="addToWork">
+            <div id="blockInput"><input type="text" id="addToWork"></div>
+            <div id="blockButton"><button type="button" onclick="addToWork()">Thêm</button></div>
+        </div>
+    </div>
+    <div id="title">
+        <div class="title one">Bạn dự định</div>
+        <div class="title two">Bạn đang thực hiện</div>
+        <div class="title three">Bạn đã hoàn thành</div>
+    </div>
+    <div id="wrap">
+        <div class="list" id="plan" ondragover="setDefault()" ondrop="dropDown('plan')"></div>
+        <div class="list" id="working" ondragover="setDefault()" ondrop="dropDown('working')"></div>
+        <div class="list" id="finish" ondragover="setDefault()" ondrop="dropDown('finish')"></div>
+    </div>
+    <div id="clear">
+        <div class="list"><button type="button" class="one" onclick="clearData('plan')">Xóa các dự kiến</button></div>
+        <div class="list"><button type="button" class="two" onclick="clearData('working')">Xóa hành động đang thực hiện</button></div>
+        <div class="list"><button type="button" class="three" onclick="clearData('finish')">Xóa các hành dộng đã xong</button></div>
+    </div>
+    <script>
+        let plan = [];
+        let working = [];
+        let finish = [];
+        let startingArea = "";
+        let address = "";
+
+        function setStartingArea(area, index){
+            startingArea = area;
+            address = index;
+        }
+
+        function setDefault(){
+            event.preventDefault();
+        }
+
+        function addToWork(){
+            if(document.getElementById("addToWork").value == ""){
+
+            }
+            else{
+                plan.push(document.getElementById("addToWork").value);
+                printWork(plan,"plan");
+                document.getElementById("addToWork").value = "";
+            }
+        }
+
+        function printWork(group, id){
+            let println = "";
+            for(let i = 0; i < group.length; i++){
+                println += "<div id='work" + i + "' draggable='true' class='jobs "+ id +"' ondragstart='setStartingArea("+ id + "," + i + ")'>" + group[i] + "</div>";
+            }
+            document.getElementById(id).innerHTML = println;
+            setDataLocal(group, id)
+        }
+
+        function setDataLocal(group, key){
+            let data = JSON.stringify(group);
+            localStorage.setItem(key, data);
+        }
+
+        function getDataLocal(){
+            let dataPlan = JSON.parse(localStorage.getItem("plan"));
+            let dataWorking = JSON.parse(localStorage.getItem("working"));
+            let dataFinish = JSON.parse(localStorage.getItem("finish"));
+            if(dataPlan == null && dataFinish == null && dataWorking == null){}
+            else{
+                localStorage.clear();
+                if(dataPlan !== null){
+                    plan = dataPlan;
+                    printWork(dataPlan, "plan");
+                }
+                if(dataWorking !== null){
+                    working = dataWorking;
+                    printWork(dataWorking, "working");
+                }
+                if(dataFinish !== null){
+                    finish = dataFinish;
+                    printWork(dataFinish, "finish");
+                }
+            }    
+        }
+
+        function dropDown(group){
+            let arrivalArea;
+            let id;
+            switch(group){
+                case "plan": 
+                    arrivalArea = plan;
+                    id = "plan";
+                    break;
+                case "working": 
+                    arrivalArea = working;
+                    id = "working";
+                    break;
+                case "finish": 
+                    arrivalArea = finish;
+                    id = "finish"
+            }
+
+            switch(startingArea){
+                case plan: 
+                    arrivalArea.push(plan[address]);
+                    plan.splice(address, 1);
+                    printWork(arrivalArea,id);
+                    printWork(plan,"plan");
+                    break;
+                case working: 
+                    arrivalArea.push(working[address]);
+                    working.splice(address, 1);
+                    printWork(arrivalArea,id);
+                    printWork(working,"working");
+                    break;
+                case finish: 
+                    arrivalArea.push(finish[address]);
+                    finish.splice(address, 1);
+                    printWork(arrivalArea,id);
+                    printWork(finish,"finish");
+                    break;
+            }
+        }
+
+        function clearData(key){
+            switch(key){
+                case "plan": 
+                    plan = [];
+                    localStorage.removeItem("plan");
+                    printWork(plan, "plan");
+                    break;
+                case "working": 
+                    working = [];
+                    localStorage.removeItem("working");
+                    printWork(working, "working");
+                    break;
+                case "finish": 
+                    finish = [];
+                    localStorage.removeItem("finish");
+                    printWork(finish, "finish");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
