@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Temperature{
+            constructor(doC){
+                this.doC = doC;
+            }
+            convertToF(){
+                return 1.8 * this.doC + 32;
+            }
+            convertToKenVin(){
+                return this.doC + 275.15;
+            }
+        }
+
+        let nhietDo = new Temperature(25);
+        document.write("Nhiệt độ F tương đương là: " + nhietDo.convertToF() + "<br/>");
+        document.write("Nhiệt độ K tương đương là: " + nhietDo.convertToKenVin());
+    </script>
+</body>
+</html>

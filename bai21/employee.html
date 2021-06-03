@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Employee{
+            constructor(id, firstName, lastName, salary){
+                this.id = id;
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.salary = salary;
+            }
+            getId(){
+                return this.id;
+            }
+            getFirstName(){
+                return this.firstName;
+            }
+            getLastName(){
+                return this.lastName;
+            }
+            getName(){
+                return this.firstName + " " + this.lastName;
+            }
+            getSalary(){
+                return this.salary;
+            }
+            raiseSalary(number){
+                this.salary = this.salary + (this.salary*number/100);
+            }
+            getAnnualSalary(){
+                return this.salary * 12;
+            }
+        }
+
+        let nv1 = new Employee(01, "Phạm", "Bình An", 10);
+        document.write("Họ tên: " + nv1.getName() + "<br>");
+        document.write("Lương hàng tháng: " +  nv1.getSalary() + "tr<br>");
+        document.write("Lương một năm: " + nv1.getAnnualSalary() + "tr<br>");
+        nv1.raiseSalary(20);
+        document.write("Lương hàng tháng sau khi tăng: " + nv1.getSalary() + "tr<br>");
+        document.write("Lương hàng năm sau khi tăng: " + nv1.getAnnualSalary() + "tr");
+    </script>
+</body>
+</html>

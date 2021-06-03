@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="veHinhChuNhat" width="200px" height="200px"></canvas>
+    <br>
+<script>
+    class Rectangle{
+        constructor(width, height, x, y){
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+        }
+
+        getArea(){
+            document.write("Diện tích là: " + this.width * this.height + "px <br/>");
+        }
+
+        getPerimeter(){
+            document.write("Chu vi là: " + (this.width + this.height) * 2 + "px");
+        }
+
+        cavasRectangle(){
+            document.getElementById("veHinhChuNhat").getContext("2d").strokeRect(this.x, this.y, this.width, this.height);
+        }
+    }
+    
+    let hcn = new Rectangle(100, 50, 10, 10);
+    hcn.cavasRectangle();
+    hcn.getArea();
+    hcn.getPerimeter();
+</script>
+</body>
+</html>
