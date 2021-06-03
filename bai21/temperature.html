@@ -13,14 +13,14 @@
             convertToF(){
                 return 1.8 * this.doC + 32;
             }
-            convertToKenVin(){
+            convertToK(){
                 return this.doC + 275.15;
             }
         }
 
         let nhietDo = new Temperature(25);
         document.write("Nhiệt độ F tương đương là: " + nhietDo.convertToF() + "<br/>");
-        document.write("Nhiệt độ K tương đương là: " + nhietDo.convertToKenVin());
+        document.write("Nhiệt độ K tương đương là: " + nhietDo.convertToK());
     </script>
 </body>
 </html>
