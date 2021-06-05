@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adam Eva</title>
+</head>
+<body>
+    <script>
+        class Weight{
+            constructor(weight){
+                this.weight = weight;
+            }
+
+            getWeight(){
+                return this.weight;
+            }
+
+            setWeight(weight){
+                this.weight = weight;
+            }
+        }
+
+        class Apple extends Weight{
+            constructor(){
+                super(10);
+            }        
+        }
+
+        class Person extends Weight{
+            constructor(name, gender, weight){
+                super(weight);
+                this.name = name;
+                this.gender = gender;
+            }
+
+            getName(){
+                return this.name;
+            }
+
+            getGender(){
+                return this.gender;
+            }
+
+            setName(name){
+                this.name = name;
+            }
+
+            setGender(gender){
+                this.gender = gender;
+            }
+
+            toSpeak(){
+                if(this.gender == "male"){
+                    console.log("Xin chào, tôi là Adam");
+                }
+                else{
+                    console.log("Xin chào, tôi là Eva");
+                }
+            }
+
+            checkApple(apple){
+                if(apple.getWeight() > 0){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+
+            eatApple(apple){
+                if(this.checkApple(apple) == true){
+                    apple.setWeight(apple.getWeight() - 1);
+                    this.setWeight(this.weight + 1);
+                }
+                else{
+                    console.log("Quả táo đã hết");
+                }
+            }
+        }
+        let apple1 = new Apple();
+        let person1 = new Person("Adam", "male", 6000);
+        let person2 = new Person("Eva", "female", 4500);
+        person2.toSpeak();
+        person1.toSpeak();
+        console.log("Trước khi ăn quả táo có trọng lượng là: " + apple1.getWeight());
+        person1.eatApple(apple1);
+        person1.eatApple(apple1);
+        person2.eatApple(apple1);
+        console.log("Sau khi ăn trọng lượng táo là: " + apple1.getWeight());
+        console.log("Trọng lượng " + person1.getName() + " là: " + person1.getWeight());
+        console.log("Trọng lượng " + person2.getName() + " là: " + person2.getWeight());
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="switchOn(button1, 'lamp1')" id="on">Bật công tắc</button>
+    <button type="button" onclick="switchOff(button1, 'lamp1')" id="off">Tắt công tắc</button>
+    <br><br>
+    <div><span>Bóng  đèn 1: </span><span id="lamp1"></span></div>
+    <br>
+    <button type="button" onclick="switchOn(button2, 'lamp2')" id="on">Bật công tắc</button>
+    <button type="button" onclick="switchOff(button2, 'lamp2')" id="off">Tắt công tắc</button>
+    <br><br>
+    <div><span>Bóng  đèn 2: </span><span id="lamp2"></span></div>
+    </div>
+    <script>
+        class Status{
+            constructor(status){
+                this.status = status;
+            }
+        }
+        class Lamp extends Status{
+            constructor(){
+                super("Tắt")
+            }
+            turnOff(){
+                this.status = "Tắt";
+            }
+            turnOn(){
+                this.status = "Bật";
+            }
+        }
+        class Switch extends Status{
+            constructor(status){
+                super(status);
+                this.lamp = new Lamp();
+            }
+
+            connectToLamp(){
+                this.lamp.status = this.status;
+            }
+
+            switchOff(){
+                this.status = "Tắt";
+                this.connectToLamp();
+            }
+
+            switchOn(){
+                this.status = "Bật";
+                this.connectToLamp();
+            }
+        }
+        let button1 = new Switch("Tắt");
+        let button2 = new Switch("Tắt");
+        function switchOn(button, lamp){
+            button.switchOn();
+            document.getElementById(lamp).innerHTML = button.lamp.status;
+        }
+        function switchOff(button, lamp){
+            button.switchOff();
+            document.getElementById(lamp).innerHTML = button.lamp.status;
+        }
+    </script>
+</body>
+</html>
