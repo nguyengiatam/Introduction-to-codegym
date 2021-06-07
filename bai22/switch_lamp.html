@@ -5,23 +5,14 @@
     <title>Document</title>
 </head>
 <body>
-    <button type="button" onclick="switchOn(button1, 'lamp1')" id="on">Bật công tắc</button>
-    <button type="button" onclick="switchOff(button1, 'lamp1')" id="off">Tắt công tắc</button>
-    <br><br>
-    <div><span>Bóng  đèn 1: </span><span id="lamp1"></span></div>
-    <br>
-    <button type="button" onclick="switchOn(button2, 'lamp2')" id="on">Bật công tắc</button>
-    <button type="button" onclick="switchOff(button2, 'lamp2')" id="off">Tắt công tắc</button>
-    <br><br>
-    <div><span>Bóng  đèn 2: </span><span id="lamp2"></span></div>
-    </div>
+    
     <script>
         class Status{
             constructor(status){
                 this.status = status;
             }
         }
-        class Lamp extends Status{
+        class ElectricLamp extends Status{
             constructor(){
                 super("Tắt")
             }
@@ -32,35 +23,37 @@
                 this.status = "Bật";
             }
         }
-        class Switch extends Status{
-            constructor(status){
+        class SwitchButton extends Status{
+            constructor(status, lamp){
                 super(status);
-                this.lamp = new Lamp();
+                this.lamp = lamp;
             }
 
-            connectToLamp(){
-                this.lamp.status = this.status;
+            connectToLamp(lamp){
+                lamp.status = this.status;
             }
 
-            switchOff(){
+            switchOff(lamp){
                 this.status = "Tắt";
-                this.connectToLamp();
+                lamp.turnOff();
             }
 
-            switchOn(){
+            switchOn(lamp){
                 this.status = "Bật";
-                this.connectToLamp();
+                lamp.turnOn();
             }
         }
-        let button1 = new Switch("Tắt");
-        let button2 = new Switch("Tắt");
-        function switchOn(button, lamp){
-            button.switchOn();
-            document.getElementById(lamp).innerHTML = button.lamp.status;
-        }
-        function switchOff(button, lamp){
-            button.switchOff();
-            document.getElementById(lamp).innerHTML = button.lamp.status;
+        let lamp1 = new ElectricLamp();
+        let button1 = new SwitchButton("Tắt", lamp1);
+        button1.connectToLamp(lamp1);
+        document.write("Kết nối bóng đèn với công tắc. <br>")
+        for(let i = 0; i < 5; i++){
+            button1.switchOn(lamp1);
+            document.write("Công tắc: " + button1.status + "<br>");
+            document.write("Bóng đèn: " + lamp1.status + "<br>");
+            button1.switchOff(lamp1);
+            document.write("Công tắc: " + button1.status + "<br>");
+            document.write("Bóng đèn: " + lamp1.status + "<br>");
         }
     </script>
 </body>
