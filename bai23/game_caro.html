@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Caro</title>
+    <style>
+        #chessboard{
+            display: flexbox;
+            flex-direction: column;
+        }
+        .row{
+            display: flex;
+        }
+        .chessbox{
+            border: 1px solid;
+            padding: 0.5px;
+            width: 30px;
+            height: 30px;
+        }
+        img{
+            width: 29px;
+            height: 29px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        class ChessMan{
+            constructor(name, img){
+                this.name = name;
+                this.img = img;
+            }
+        }
+
+        class ChessBoard{
+            constructor(width, height){
+                this.width = width;
+                this.height = height;
+                this.turn = true;
+                this.endGame = false;
+                this.chessPiecesPlayer = [];
+            }
+
+            drawChessBoard(){
+                let chessBoard = "<div id='chessboard'>";
+                for(let i = 0; i < this.height; i++){
+                    chessBoard += "<div class='row'>";
+                    for(let j = 0; j < this.width; j++){
+                        chessBoard += "<div class='chessbox'></div>";
+                    }
+                    chessBoard += "</div>";
+                }
+                chessBoard += "</div>";
+                chessBoard += "<button type='button' id='reset'>Chơi lại</button>";
+                document.write(chessBoard);
+            }
+
+            playGame(index){
+                if(this.turn === true){
+                    this.chessPiecesPlayer[index] = new ChessMan("X", "<img src='x.png'>");
+                    this.turn = false;
+                }
+                else{
+                    this.chessPiecesPlayer[index] = new ChessMan("O", "<img src='o.png'>");
+                    this.turn = true;
+                }
+                chessbox[index].innerHTML = this.chessPiecesPlayer[index].img;
+                this.checkWin(index, this.chessPiecesPlayer[index].name, 1);
+                this.checkWin(index, this.chessPiecesPlayer[index].name, this.width);
+                this.checkWin(index, this.chessPiecesPlayer[index].name, this.width + 1);
+                this.checkWin(index, this.chessPiecesPlayer[index].name, this.width - 1);
+            }
+
+            checkWin(index, name, direction){
+                let count = 1;
+                for(let i = index + direction; ; i += direction){
+                    if(this.chessPiecesPlayer[i] == undefined || this.chessPiecesPlayer[i].name != name){
+                        break;
+                    }
+                    count++;
+                }
+                for(let i = index - direction; ; i -= direction){
+                    if(this.chessPiecesPlayer[i] == undefined || this.chessPiecesPlayer[i].name != name){
+                        break;
+                    }
+                    count++;
+                }
+                if(count >= 5){
+                    setTimeout(function(){
+                        alert(name + " Win!");
+                    },10);
+                    this.endGame = true;
+                }
+            }
+
+            resetGame(){
+                this.endGame = false;
+                this.turn = true;
+                this.chessPiecesPlayer = [];
+                for(let i = 0; i < chessbox.length; i++){
+                    chessbox[i].innerHTML = "";
+                }
+                
+            }
+        }
+        
+        let chessBoard = new ChessBoard(20, 20);
+        chessBoard.drawChessBoard();
+        let chessbox = document.getElementsByClassName("chessbox");
+        for(let i = 0; i < chessbox.length; i++){
+            chessbox[i].addEventListener("click", function(){
+                if(chessbox[i].innerHTML != "" || chessBoard.endGame == true){
+
+                }
+                else{
+                    chessBoard.playGame(i);
+                }
+            })
+        }
+        document.getElementById("reset").addEventListener("click", function(){
+            chessBoard.resetGame();
+        });
+    </script>
+</body>
+
+</html>
