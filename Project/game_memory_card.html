@@ -84,7 +84,7 @@
         let checkCard;
         let game1 = new Game(30);
         game1.setArrayCard(12);
-        game1.changeCard();
+        game1.derangeCard();
         game1.drawArrayCard($('#game'), 3, 8);
         $("#imgStart").attr("src", "img/start" + Math.floor(Math.random()*3) + ".gif");
         for(let i = 0; i < $(".card").length; i++){
@@ -197,7 +197,7 @@
             $("#buttonStartEnd").css("display","block");
             $("#buttonEnd").css("display","flex");
         }
-        
+
         function checkCharacter(photoname){
             switch(photoname){
                 case "<img src=\"img/front0.png\">": 
