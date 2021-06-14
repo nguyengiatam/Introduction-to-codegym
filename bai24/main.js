@@ -8,7 +8,7 @@ let stopUpdateDistance;
 let reverseCar = [];
 let pointImpactX;
 let pointImpactY;
-let timeCreatContraryCar = Math.floor(Math.random()*1500) + 3000;
+let timeCreatContraryCar = Math.floor(Math.random()*1800) + 700;
 let myCanvas = document.getElementById("street").getContext("2d");
 let myCar = new Car(40, 80, 620, 220, myCanvas, "img/mycar.png");
 let street = new Street(myCanvas, "img/street.png");
@@ -32,10 +32,7 @@ function restart(){
         reverseCar[i].top = 700;
         reverseCar[i].left = 0;
     }
-    carMove();
-    creatCar();
-    speedUp();
-    updateDistanceAndSpeed();
+    startGame();
 }
 
 function startGame(){
@@ -43,11 +40,11 @@ function startGame(){
     creatCar();
     speedUp();
     updateDistanceAndSpeed();
+    $("#start").css("display", "none");
+    $("#restart").css("display", "block");
 }
 
 function carMove(){
-    $("#start").css("display", "none");
-    $("#restart").css("display", "block");
     setTimeout(function(){
         street.movingCarOnTheRoad(myCar);
         updateLocation();

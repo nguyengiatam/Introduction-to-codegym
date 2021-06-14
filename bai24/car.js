@@ -102,6 +102,6 @@ class Car extends Location{
 
     carSpeedUpdate(){
         let speedOfCar = this.speed*5*3.6;
-        return speedOfCar.toFixed(2);
+        return parseInt(speedOfCar);
     }
 }
