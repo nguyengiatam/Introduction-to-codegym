@@ -19,7 +19,6 @@ for(let i = 0; i < 12; i++){
 window.onload = function loadPicturesStartGame(){
     street.drawStreet(street.top);
     myCar.drawCar();
-    myCar.explosion.src = "img/explosion.png";
 }
 
 function restart(){
