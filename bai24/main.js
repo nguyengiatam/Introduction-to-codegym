@@ -3,11 +3,11 @@ const DOWN = 40;
 const LEFT = 37;
 const RIGHT = 39;
 let stopGame = false;
+let stopSpeedUp;
 let reverseCar = [];
 let pointImpactX;
 let pointImpactY;
 let timeCreatContraryCar = Math.floor(Math.random()*1500) + 3000;
-
 let myCanvas = document.getElementById("street").getContext("2d");
 let myCar = new Car(40, 80, 620, 220, myCanvas, "img/mycar.png");
 let street = new Street(myCanvas, "img/street.png");
@@ -27,12 +27,14 @@ function restart(){
     stopGame = false;
     myCar.top = 620;
     myCar.left = 220;
+    street.speed = 2.5;
     for(let i = 0; i < reverseCar.length; i++){
         reverseCar[i].top = 700;
         reverseCar[i].left = 0;
     }
     carMove();
     creatCar();
+    speedUp();
 }
 
 function carMove(){
@@ -54,18 +56,30 @@ function carMove(){
         }
         else{
             myCar.carExplosion();
+            clearTimeout(stopSpeedUp);
             $(".end").css("display", "block");
             $("#street").css("opacity", "0.5");
         }
-    },15);
+    },12);
 }
+
+function speedUp(){
+    stopSpeedUp = setTimeout(function(){
+        street.speed += street.speed * 20/100;
+        for(let i = 0; i < reverseCar.length; i++){
+            reverseCar[i].speed += reverseCar[i].speed * 20/100;
+        }
+        speedUp();
+    }, 15000);
+}
+
 function creatCar(){
     setTimeout(function(){
-        timeCreatContraryCar = Math.floor(Math.random()*2000) + 500;
+        timeCreatContraryCar = Math.floor(Math.random()*1800) + 700;
         while(true){
             let i = Math.floor(Math.random()*12);
             if(reverseCar[i].top > 700){
-                reverseCar[i].creatCoordinates();
+                reverseCar[i].creatCoordinates(street);
                 break;
             }
         }

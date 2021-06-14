@@ -46,10 +46,9 @@ class Car extends Location{
         this.setRightBottom();
     }
 
-    creatCoordinates(){
+    creatCoordinates(street){
         let x = Math.floor(Math.random()*181) + 135;
-        let speedCar = Math.floor(Math.random()*3) + 3.5;
-        this.speed = speedCar;
+        this.speed =  Math.floor(Math.random()*2) + street.speed + 0.5;
         this.left = x;
         this.top = -100;
     }
