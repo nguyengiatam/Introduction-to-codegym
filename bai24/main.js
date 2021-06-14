@@ -4,6 +4,7 @@ const LEFT = 37;
 const RIGHT = 39;
 let stopGame = false;
 let stopSpeedUp;
+let stopUpdateDistance;
 let reverseCar = [];
 let pointImpactX;
 let pointImpactY;
@@ -15,7 +16,7 @@ for(let i = 0; i < 12; i++){
     reverseCar[i] = new Car(40, 80, 700, 0, myCanvas, "img/vatcan" + i + ".png");
 }
 
-window.onload = function drawStartGame(){
+window.onload = function loadPicturesStartGame(){
     street.drawStreet(street.top);
     myCar.drawCar();
     myCar.explosion.src = "img/explosion.png";
@@ -24,10 +25,10 @@ window.onload = function drawStartGame(){
 function restart(){
     $(".end").css("display", "none");
     $("#street").css("opacity", "1");
+    $("#distance").text("0");
     stopGame = false;
-    myCar.top = 620;
-    myCar.left = 220;
-    street.speed = 2.5;
+    myCar = new Car(40, 80, 620, 220, myCanvas, "img/mycar.png");
+    street = new Street(myCanvas, "img/street.png");
     for(let i = 0; i < reverseCar.length; i++){
         reverseCar[i].top = 700;
         reverseCar[i].left = 0;
@@ -35,28 +36,29 @@ function restart(){
     carMove();
     creatCar();
     speedUp();
+    updateDistanceAndSpeed();
+}
+
+function startGame(){
+    carMove();
+    creatCar();
+    speedUp();
+    updateDistanceAndSpeed();
 }
 
 function carMove(){
     $("#start").css("display", "none");
     $("#restart").css("display", "block");
     setTimeout(function(){
-        let z = street.top - street.height + street.speed;
-        if(street.top >= 700){
-            street.top = 0;
-        }
-        myCanvas.clearRect(0, 0, 500, 700);
-        street.top += street.speed;
-        street.drawStreet(z);
-        street.drawStreet(street.top);
+        street.movingCarOnTheRoad(myCar);
         updateLocation();
-        myCar.drawCar();
         if(stopGame == false){
             carMove();
         }
         else{
             myCar.carExplosion();
             clearTimeout(stopSpeedUp);
+            clearTimeout(stopUpdateDistance);
             $(".end").css("display", "block");
             $("#street").css("opacity", "0.5");
         }
@@ -65,12 +67,14 @@ function carMove(){
 
 function speedUp(){
     stopSpeedUp = setTimeout(function(){
-        street.speed += street.speed * 20/100;
+        myCar.carSpeedUp();
         for(let i = 0; i < reverseCar.length; i++){
-            reverseCar[i].speed += reverseCar[i].speed * 20/100;
+            if(reverseCar[i].top <= 700){
+                reverseCar[i].carSpeedUp();
+            }
         }
         speedUp();
-    }, 15000);
+    }, 5000);
 }
 
 function creatCar(){
@@ -79,7 +83,7 @@ function creatCar(){
         while(true){
             let i = Math.floor(Math.random()*12);
             if(reverseCar[i].top > 700){
-                reverseCar[i].creatCoordinates(street);
+                reverseCar[i].creatCoordinates(myCar);
                 break;
             }
         }
@@ -92,14 +96,20 @@ function creatCar(){
 function updateLocation(){
     for(let i = 0; i < reverseCar.length; i++){
         if(reverseCar[i].top <= 700){
-            reverseCar[i].top += reverseCar[i].speed;
-            reverseCar[i].setRightBottom();
-            reverseCar[i].drawCar();
+            reverseCar[i].updateLocationOfTheCar();
             if(myCar.checkImpactByCar(reverseCar[i]) == true){
                 stopGame = true;
             }
         }
     }
+}
+
+function updateDistanceAndSpeed(){
+    stopUpdateDistance = setTimeout(function(){
+        $("#distance").text(street.updateDistanceTraveled(myCar));
+        $("#speed").text(myCar.carSpeedUpdate());
+        updateDistanceAndSpeed();
+    },1000);
 }
 
 window.addEventListener("keydown", function(){

@@ -5,6 +5,7 @@ class Car extends Location{
         this.bottom = this.top + this.height;
         this.right = this.left + this.width;
         this.explosion = new Image();
+        this.explosion.src = "img/explosion.png";
     }
 
     drawCar(){
@@ -46,9 +47,15 @@ class Car extends Location{
         this.setRightBottom();
     }
 
-    creatCoordinates(street){
+    updateLocationOfTheCar(){
+        this.top += this.speed;
+        this.setRightBottom();
+        this.drawCar();
+    }
+
+    creatCoordinates(myCar){
         let x = Math.floor(Math.random()*181) + 135;
-        this.speed =  Math.floor(Math.random()*2) + street.speed + 0.5;
+        this.speed =  Math.floor(Math.random()*2) + myCar.speed + 0.5;
         this.left = x;
         this.top = -100;
     }
@@ -87,5 +94,14 @@ class Car extends Location{
     }
     carExplosion(){
         this.canvas.drawImage(this.explosion, 0, 0, 150, 150, pointImpactX - 40, pointImpactY - 50, 80, 80);
+    }
+
+    carSpeedUp(){
+        this.speed += this.speed * 8/100;
+    }
+
+    carSpeedUpdate(){
+        let speedOfCar = this.speed*5*3.6;
+        return speedOfCar.toFixed(2);
     }
 }
